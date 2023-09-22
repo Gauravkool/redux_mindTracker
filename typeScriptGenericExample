@@ -1,0 +1,105 @@
+// class AwesomeArray<x> {
+//     private data: x[] = [];
+
+//     public pushAtTheBeginning(item: x) {
+//         this.data = [item, ...this.data]
+//     }
+
+//     public push(item: x) {
+//         this.data.push(item)
+//     }
+//     public last() {
+//         return this.data[this.data.length - 1]
+//     }
+//     public get(index: number) {
+//         return this.data[index]
+//     }
+//     public print() {
+//         for (let i = 0; i < this.data.length; i++) {
+//             console.log(`${i} is ${this.data[i]}`)
+//         }
+//     }
+// }
+
+// // this type work as useState //
+// function usestate<pqr>(initialValue: pqr): [data: pqr, setRating: (data: pqr) => void] {
+//     let data = initialValue;
+//     function setData(updatedValue: pqr) {
+//         data = updatedValue
+//     }
+//     return [data, setData]
+// }
+
+// const [rating, setRating] = usestate<number>(10)
+// setRating(20)
+
+// const a = new AwesomeArray<number>();
+// a.push(10)
+// a.push(20)
+// a.push(30)
+// a.push(40)
+
+// // a.pushAtTheBeginning(90)
+// // console.log(a.last())
+// console.log(a.get(2))
+// // a.print();
+
+
+
+// // class example //
+// class dog {
+//     public name?: string;
+//     constructor(name: string) {
+//         this.name = name
+//     }
+// }
+// const d1 = new dog("gaurav");
+// console.log(d1.name?.substring(2, 3))  // u
+// // OR
+// // d1.name && d1.name.substring(1,3)
+
+// // shortkut ways to define class with constructor 
+
+// class dog {
+//     constructor(public name: string, public breed: string, public age: number) {
+// // kisi normal function me nahi kar sakte hum ye public variable define
+//     }
+// }
+// const d1 = new dog("gaurav", "homosepions", 60);
+
+// // class component me props kaha se aata hai 
+// class Component<T> {
+//     constructor(public props: T) {
+//     }
+// }
+// type Greeting2Props = {
+//     name: string
+// }
+// class Greting2 extends Component<Greeting2Props>{
+//     render() {
+//         this.props
+//     }
+// }
+
+// //OR WIth constructor
+// class Greting2 extends Component<Greeting2Props>{
+//     constructor(public props: Greeting2Props) {
+//         super(props)
+//     }
+// }
+
+// Bind Method //
+// class Dog {
+//     constructor(public name: string) {
+
+//     }
+//     gretting() {
+//         console.log("hello " + this.name)
+//     }
+// }
+
+// const d1 = new Dog("Pluto")
+// d1.gretting()
+// const myDog = d1.gretting.bind(d1)
+// myDog()
+
