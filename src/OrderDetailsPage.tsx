@@ -18,7 +18,7 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = (props) => {
     axios.get("https://dummyjson.com/carts/" + orderId).then((res) => {
       dispatch(orderDetailLoadedAction(res.data));
     });
-  }, [orderId, ordersMap]);
+  }, [orderId]);
   if (!order) {
     return <div>Loading...</div>;
   }
