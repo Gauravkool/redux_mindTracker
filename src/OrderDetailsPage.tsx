@@ -1,22 +1,24 @@
 import { FC, memo, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { ordersMapSelector, ordersProductSelector } from "./selectors/orders";
 import axios from "axios";
-import { orderDetailLoadedAction } from "./actions/orders";
-type OrderDetailsPageProps = {};
-const OrderDetailsPage: FC<OrderDetailsPageProps> = (props) => {
-  const params = useParams();
-  const orderId = +params.orderId!;
-  const dispatch = useDispatch();
-  const ordersMap = useSelector(ordersMapSelector);
-  const ordersProductsMap = useSelector(ordersProductSelector);
-  console.log("ordersProductsMap", ordersProductsMap)
-  const order = ordersMap[orderId];
-  const products = ordersProductsMap[orderId];
+import Order from "./Models/Order";
+import Product from "./Models/Product";
+
+export type OrderDetailsPageProps = {
+  order:  Order ;
+  products: Product[] ;
+  orderDetailLoaded: (order: Order) => void;
+  orderId: number;
+};
+const OrderDetailsPage: FC<OrderDetailsPageProps> = ({
+  order,
+  products,
+  orderDetailLoaded,
+  orderId,
+}) => {
+  
   useEffect(() => {
     axios.get("https://dummyjson.com/carts/" + orderId).then((res) => {
-      dispatch(orderDetailLoadedAction(res.data));
+      orderDetailLoaded(res.data);
     });
   }, [orderId]);
   if (!order) {
@@ -34,4 +36,5 @@ const OrderDetailsPage: FC<OrderDetailsPageProps> = (props) => {
   );
 };
 OrderDetailsPage.defaultProps = {};
+
 export default memo(OrderDetailsPage);

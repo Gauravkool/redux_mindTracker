@@ -10,7 +10,7 @@
 
 import { Route, Routes } from "react-router-dom";
 import OrderListPage from "./OrderListPage";
-import OrderDetailsPage from "./OrderDetailsPage";
+import OrderDetailsPage from "./OderDetailPageWithRedux";
 import ProductListPage from "./ProductListPage";
 
 // import ProductListPage from "./ProductListPage";
@@ -58,7 +58,7 @@ function App() {
         <Routes>
           <Route index element={<ProductListPage />}></Route>
           <Route path="/orders" element={<OrderListPage />}></Route>
-          <Route path="/orders/:orderId" element={<OrderDetailsPage />}></Route>
+          <Route path="/orders/:orderId" element={<OrderDetailsPage orderId={4} />}></Route>
         </Routes>
       </div>
     </>
